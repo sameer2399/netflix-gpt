@@ -3,7 +3,18 @@
 - create react app
 - configure tailwind css
 - header
+- routing of app
 - sign up form
+- form validation
+- useRef hook
+- firebase setup
+- deploying our app to production
+- created signup account
+- implement signIn user Api
+- created Redux store with userSlice
+- implemented signout
+- update profile 
+- fetch movies from TMDB
 
 ...
 # Features
