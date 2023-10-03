@@ -6,12 +6,12 @@ import { useDispatch } from 'react-redux'
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { addUser } from '../utils/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { USER_AVATAR } from '../utils/constants';
+
 
 
 const Login = () => {
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -28,7 +28,8 @@ const Login = () => {
   }
 
   const handleButtonClick = () => {
-    const message = checkValidData(email.current.value, password.current.value, name.current.value);
+    console.log(email.current.value);
+    const message = checkValidData(email.current.value, password.current.value);
 
     setErrorMessage(message);
 
@@ -42,11 +43,11 @@ const Login = () => {
     // Signed up 
     const user = userCredential.user;
     updateProfile(user, {
-      displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/89624003?v=4"
+      displayName: name.current.value, photoURL: USER_AVATAR
     }).then(() => {
       const { uid, email, displayName, photoURL } = auth.currentUser;
       dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
-      navigate("/browse");
+      
     }).catch((error) => {
       setErrorMessage(error);
     });
@@ -69,7 +70,7 @@ const Login = () => {
     // Signed in 
     const user = userCredential.user;
     console.log(user);
-    navigate("/browse");
+    
     // ...
   })
   .catch((error) => {
@@ -92,7 +93,7 @@ const Login = () => {
         />
       </div>
 
-      <form onSubmit={(e) => e.preventDefault()} className='p-12 bg-black absolute w-4/12 my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80' action="">
+      <form onSubmit={(e) => e.preventDefault()} className='p-12 bg-black absolute w-4/12 my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80 sm:w-3/4' action="">
         <h1 className='font-bold text-3xl py-4'>
           {isSignInForm
             ? "Sign In" 
