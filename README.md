@@ -20,6 +20,20 @@
 - add hardcoded value to constants.js
 - register for tmdb api & create an app & get access token
 - get data from tmdb now playing movies list
+- custom hook for now playing movies
+- create movie slice
+- update store with movie data
+- fetch data for trailer video
+- update store with trailer video data
+- embedded the youtube video and make it autoplay
+- Tailwind classes to make main container look awesome
+- build secondary component
+- build movielist
+- build movie card
+- made the browse page amazing with tailwind css
+- usePopular custom hooks
+
+
 
 ...
 # Features

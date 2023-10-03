@@ -54,7 +54,7 @@ const Header = () => {
 
       {user && <div className="flex p-2 sm:flex-col gap-1 sm:items-end">
         <img
-          className="w-12 h-12 sm:w-8 sm:h-8 rounded-full"
+          className="w-12 h-12 sm:w-8 sm:h-8"
           src={user?.photoURL}
           alt="userIcon"
         />
