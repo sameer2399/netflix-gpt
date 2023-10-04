@@ -58,9 +58,9 @@ const Header = () => {
   }
 
   return (
-    <div className="w-screen max-w-[100vw] absolute px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between sm:px-2 sm:max-w-[100vw]">
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col  md:flex-row justify-between ">
       <img
-        className="w-44 sm:w-24"
+        className="w-44 mx-auto md:mx-0"
         src={LOGO}
         alt="logo" 
       />
@@ -75,12 +75,12 @@ const Header = () => {
 
 
         <img
-          className="w-12 h-12 sm:w-8 sm:h-8"
+          className="hidden md:block w-12 h-12"
           src={user?.photoURL}
           alt="userIcon"
         />
 
-        <button className="font-bold text-white" onClick={handleSignOut}>
+        <button className="p-2 m-2 bg-gray-900 text-white" onClick={handleSignOut}>
           Sign Out
         </button>
       </div>}
