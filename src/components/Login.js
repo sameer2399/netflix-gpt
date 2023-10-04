@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { addUser } from '../utils/userSlice';
 import { USER_AVATAR } from '../utils/constants';
+import { BG_URL } from '../utils/constants'
 
 
 
@@ -28,7 +29,6 @@ const Login = () => {
   }
 
   const handleButtonClick = () => {
-    console.log(email.current.value);
     const message = checkValidData(email.current.value, password.current.value);
 
     setErrorMessage(message);
@@ -51,7 +51,7 @@ const Login = () => {
     }).catch((error) => {
       setErrorMessage(error);
     });
-    console.log(user);
+    
     
     // ...
   })
@@ -69,7 +69,6 @@ const Login = () => {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log(user);
     
     // ...
   })
@@ -88,7 +87,7 @@ const Login = () => {
     
       <div className='absolute'>
         <img className='w-screen h-screen object-cover'
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/9db4a880-3034-4e98-bdea-5d983e86bf52/b5953637-091d-4e02-9754-2bfadc8a8f7c/IN-en-20230925-popsignuptwoweeks-perspective_alpha_website_small.jpg" 
+          src={BG_URL} 
           alt="logo" 
         />
       </div>

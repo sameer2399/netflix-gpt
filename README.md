@@ -32,6 +32,13 @@
 - build movie card
 - made the browse page amazing with tailwind css
 - usePopular custom hooks
+- useHorror custom hooks
+- useTopRatedMovies hooks
+- useUpComingMovies hooks
+- GPT search page
+- gpt search bar
+- multi language feature in our app
+ 
 
 
 
