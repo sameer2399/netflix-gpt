@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import lang from "../utils/languageConstants";
 import { useSelector } from "react-redux";
 import openai from "../utils/openai";
@@ -10,6 +10,8 @@ const GptSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);
   const searchText = useRef(null);
   const dispatch = useDispatch();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   //search movie in tmdb
   const searchMovieTmdb = async (movie) => {
@@ -23,11 +25,12 @@ const GptSearchBar = () => {
   
   
     const handleGptSearchClick = async () => {
-    const gptQuery =
+      setIsLoading(true);
+      const gptQuery =
       "Act as a movie recommendation system and suggest some movies for the query" +
       searchText.current.value +
       ". only give me names of 5 movies, comma separated like the example result given ahead. Example result: Gadar, Sholey, Don, 3 idiots, DDLJ";
-
+      
     //make an api call to gpt ai and get movie results
 
     const gptResults = await openai.chat.completions.create({
@@ -52,6 +55,7 @@ const GptSearchBar = () => {
     const tmdbResults = await Promise.all(promiseArray);
 
     dispatch(addGptMovieResult({movieNames: gptMovies, movieResults: tmdbResults}));
+    setIsLoading(false);
   };
 
   return (
@@ -71,9 +75,11 @@ const GptSearchBar = () => {
         <button
           className="m-4 md:col-span-3 col-span-4 py-2 md:px-4 bg-red-700 text-white rounded-lg"
           onClick={handleGptSearchClick}
-        >
-          {lang[langKey].search}
+        > 
+          {isLoading? <p>Loading ..</p> : <>{lang[langKey].search}</> }
         </button>
+
+        
       </form>
     </div>
   );

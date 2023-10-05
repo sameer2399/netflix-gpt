@@ -36,6 +36,9 @@ body {
   overflow-x: hidden;
 }
 
+.movie::-webkit-scrollbar{
+  display: none;
+}
 * {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
