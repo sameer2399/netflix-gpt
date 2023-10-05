@@ -10,6 +10,9 @@ import { LOGO } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { changeLanguage } from "../utils/configSlice";
+import { toast } from "react-toastify";
+
+
 
 
 const Header = () => {
@@ -29,6 +32,7 @@ const Header = () => {
       .catch((error) => {
         navigate("/error");
       });
+      toast.success("Signed out successfully");
   };
 
   
